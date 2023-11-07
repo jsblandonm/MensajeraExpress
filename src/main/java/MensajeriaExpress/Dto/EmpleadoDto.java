@@ -2,52 +2,63 @@ package MensajeriaExpress.Dto;
 
 public class EmpleadoDto {
 
-    public String nombre;
-    public String apellidos;
-    public Integer celular;
-    public String email;
-    public String direccionResidencia;
-    public String ciudad;
-    public Integer antiguedadEmpresa;
-    public String tipoSangre;
-    public String tipoEmpleado;
+    private Integer cedulaEmpleado;
+    private String nombreEmpleado;
+    private String apellidoEmpleado;
+    private Integer celularEmpleado;
+    private String email;
+    private String direccionResidencia;
+    private String ciudad;
+    private Integer antiguedadEmpresa;
+    private String tipoSangre;
+    private String tipo;
 
     public EmpleadoDto() {
     }
 
-    public EmpleadoDto( String nombre, String apellidos, Integer celular, String email, String direccionResidencia, String ciudad, Integer antiguedadEmpresa, String tipoSangre, String tipoEmpleado) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.celular = celular;
+    public EmpleadoDto(Integer cedulaEmpleado, String nombreEmpleado, String apellidoEmpleado, Integer celularEmpleado, String email, String direccionResidencia, String ciudad, Integer antiguedadEmpresa, String tipoSangre, String tipo) {
+        this.cedulaEmpleado = cedulaEmpleado;
+        this.nombreEmpleado = nombreEmpleado;
+        this.apellidoEmpleado = apellidoEmpleado;
+        this.celularEmpleado = celularEmpleado;
         this.email = email;
         this.direccionResidencia = direccionResidencia;
         this.ciudad = ciudad;
         this.antiguedadEmpresa = antiguedadEmpresa;
         this.tipoSangre = tipoSangre;
-        this.tipoEmpleado = tipoEmpleado;
-    }
-    public String getNombre() {
-        return nombre;
+        this.tipo = tipo;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public Integer getCedulaEmpleado() {
+        return cedulaEmpleado;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public void setCedulaEmpleado(Integer cedulaEmpleado) {
+        this.cedulaEmpleado = cedulaEmpleado;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public String getNombreEmpleado() {
+        return nombreEmpleado;
     }
 
-    public Integer getCelular() {
-        return celular;
+    public void setNombreEmpleado(String nombreEmpleado) {
+        this.nombreEmpleado = nombreEmpleado;
     }
 
-    public void setCelular(Integer celular) {
-        this.celular = celular;
+    public String getApellidoEmpleado() {
+        return apellidoEmpleado;
+    }
+
+    public void setApellidoEmpleado(String apellidoEmpleado) {
+        this.apellidoEmpleado = apellidoEmpleado;
+    }
+
+    public Integer getCelularEmpleado() {
+        return celularEmpleado;
+    }
+
+    public void setCelularEmpleado(Integer celularEmpleado) {
+        this.celularEmpleado = celularEmpleado;
     }
 
     public String getEmail() {
@@ -90,11 +101,11 @@ public class EmpleadoDto {
         this.tipoSangre = tipoSangre;
     }
 
-    public String getTipoEmpleado() {
-        return tipoEmpleado;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipoEmpleado(String tipoEmpleado) {
-        this.tipoEmpleado = tipoEmpleado;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }
