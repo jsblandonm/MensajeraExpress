@@ -1,5 +1,6 @@
 package MensajeriaExpress.controller;
 
+import MensajeriaExpress.Dto.ClienteDto;
 import MensajeriaExpress.entity.Cliente;
 import MensajeriaExpress.service.ClientService;
 import jakarta.validation.Valid;

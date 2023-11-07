@@ -69,7 +69,13 @@ public class Cliente {
         this.envios = envios;
     }
 
-
-
-
+    public Cliente(Integer cedulaCliente, String nombreCliente, String apellidoCliente, String celularCliente, String emailCliente, String direccionResidencia, String ciudad) {
+        this.cedulaCliente = cedulaCliente;
+        this.nombreCliente = nombreCliente;
+        this.apellidoCliente = apellidoCliente;
+        this.celularCliente = celularCliente;
+        this.emailCliente = emailCliente;
+        this.direccionResidencia = direccionResidencia;
+        this.ciudad = ciudad;
+    }
 }

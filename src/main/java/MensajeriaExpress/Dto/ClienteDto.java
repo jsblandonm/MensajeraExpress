@@ -2,55 +2,74 @@ package MensajeriaExpress.Dto;
 
 public class ClienteDto {
 
+    private Integer cedulaCliente;
+    private String nombreCliente;
+    private String apellidoCliente;
+    private Integer celularCliente;
+    private String emailCliente;
 
-    public String nombre;
-    public String apellidos;
-    public Integer celular;
-    public String email;
-    public String ciudad;
+    private String direccionResidencia;
+    private String ciudad;
 
     public ClienteDto() {
     }
 
-    public ClienteDto(String nombre, String apellidos, Integer celular, String email, String ciudad) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.celular = celular;
-        this.email = email;
+    public ClienteDto(Integer cedulaCliente, String nombreCliente, String apellidoCliente, Integer celularCliente, String emailCliente, String direccionResidencia, String ciudad) {
+        this.cedulaCliente = cedulaCliente;
+        this.nombreCliente = nombreCliente;
+        this.apellidoCliente = apellidoCliente;
+        this.celularCliente = celularCliente;
+        this.emailCliente = emailCliente;
+        this.direccionResidencia = direccionResidencia;
         this.ciudad = ciudad;
     }
 
-
-    public String getNombre() {
-        return nombre;
+    public Integer getCedulaCliente() {
+        return cedulaCliente;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCedulaCliente(Integer cedulaCliente) {
+        this.cedulaCliente = cedulaCliente;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getNombreCliente() {
+        return nombreCliente;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
     }
 
-    public Integer getCelular() {
-        return celular;
+    public String getApellidoCliente() {
+        return apellidoCliente;
     }
 
-    public void setCelular(Integer celular) {
-        this.celular = celular;
+    public void setApellidoCliente(String apellidoCliente) {
+        this.apellidoCliente = apellidoCliente;
     }
 
-    public String getEmail() {
-        return email;
+    public Integer getCelularCliente() {
+        return celularCliente;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCelularCliente(Integer celularCliente) {
+        this.celularCliente = celularCliente;
+    }
+
+    public String getEmailCliente() {
+        return emailCliente;
+    }
+
+    public void setEmailCliente(String emailCliente) {
+        this.emailCliente = emailCliente;
+    }
+
+    public String getDireccionResidencia() {
+        return direccionResidencia;
+    }
+
+    public void setDireccionResidencia(String direccionResidencia) {
+        this.direccionResidencia = direccionResidencia;
     }
 
     public String getCiudad() {
