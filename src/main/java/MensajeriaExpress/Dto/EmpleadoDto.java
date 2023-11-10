@@ -5,7 +5,7 @@ public class EmpleadoDto {
     private Integer cedulaEmpleado;
     private String nombreEmpleado;
     private String apellidoEmpleado;
-    private Integer celularEmpleado;
+    private String celularEmpleado;
     private String email;
     private String direccionResidencia;
     private String ciudad;
@@ -16,7 +16,7 @@ public class EmpleadoDto {
     public EmpleadoDto() {
     }
 
-    public EmpleadoDto(Integer cedulaEmpleado, String nombreEmpleado, String apellidoEmpleado, Integer celularEmpleado, String email, String direccionResidencia, String ciudad, Integer antiguedadEmpresa, String tipoSangre, String tipo) {
+    public EmpleadoDto(Integer cedulaEmpleado, String nombreEmpleado, String apellidoEmpleado, String celularEmpleado, String email, String direccionResidencia, String ciudad, Integer antiguedadEmpresa, String tipoSangre, String tipo) {
         this.cedulaEmpleado = cedulaEmpleado;
         this.nombreEmpleado = nombreEmpleado;
         this.apellidoEmpleado = apellidoEmpleado;
@@ -53,11 +53,11 @@ public class EmpleadoDto {
         this.apellidoEmpleado = apellidoEmpleado;
     }
 
-    public Integer getCelularEmpleado() {
+    public String getCelularEmpleado() {
         return celularEmpleado;
     }
 
-    public void setCelularEmpleado(Integer celularEmpleado) {
+    public void setCelularEmpleado(String celularEmpleado) {
         this.celularEmpleado = celularEmpleado;
     }
 
