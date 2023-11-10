@@ -29,41 +29,77 @@ public class ClienteController {
             @ApiResponse(code = 500, message = "Lo sentimos, ha habido un error interno en el servidor, no ha sido posible procesar la solicitud.")
     })*/
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public ClienteDto addCliente(@Valid @RequestBody ClienteDto cliente) {
+
+        return clienteService.addCliente(cliente);
+    }
+
     @GetMapping
     public List<Cliente> getAllClintes(){
         return  clienteService.getAllClientes();
     }
 
     @GetMapping("/{cedulaCliente}")
-    public Cliente findClienteById(@PathVariable Integer cedulaCliente) {
-        try {
-            Cliente cliente = clienteService.findClienteById(cedulaCliente);
-            if (cliente == null){
-                throw new ClientAbortException("No existe cliente con id " + cedulaCliente);
-            }
-            return cliente;
-        } catch (ClientAbortException e) {
-            throw new ResponseStatusException(HttpStatus .NOT_FOUND,e.getMessage(),e);
+    public ClienteDto findClienteById(@PathVariable Integer cedulaCliente) {
+
+        Cliente cliente = clienteService.findClienteById(cedulaCliente);
+
+        if (cliente == null){
+            throw new Error("No existe cliente con id " + cedulaCliente);
         }
-    }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Cliente addCliente(@Valid @RequestBody Cliente cliente) {
+        return mapearClienteAClienteDto(cliente);
 
-        return clienteService.addCliente(cliente);
     }
 
     @PutMapping("/{cedulaCliente}")
-    public Cliente updateCliente(@PathVariable Integer cedulaCliente,@Valid @RequestBody Cliente cliente) {
+    public ClienteDto updateCliente(@PathVariable Integer cedulaCliente,@Valid @RequestBody ClienteDto clienteDto) {
         if (cedulaCliente == null){
             throw new RuntimeException("El id del cliente es requerido");
         }
-        return clienteService.updateCliente(cedulaCliente, cliente);
+        Cliente cliente = mapearClienteDtoACliente(clienteDto);
+        cliente = clienteService.updateCliente(cedulaCliente,cliente);
+        return mapearClienteAClienteDto(cliente);
+
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{cedulaCliente}")
     public void deleteCliente(@PathVariable Integer cedulaCliente) {
+
         clienteService.deleteCliente(cedulaCliente);
     }
+
+    private Cliente mapearClienteDtoACliente(ClienteDto clienteDto){
+        Cliente cliente = new Cliente();
+
+        cliente.setCedulaCliente(clienteDto.getCedulaCliente());
+        cliente.setNombreCliente(clienteDto.getNombreCliente());
+        cliente.setApellidoCliente(clienteDto.getApellidoCliente());
+        cliente.setCelularCliente(clienteDto.getCelularCliente());
+        cliente.setDireccionResidencia(clienteDto.getDireccionResidencia());
+        cliente.setCiudad(clienteDto.getCiudad());
+        cliente.setEmailCliente(clienteDto.getEmailCliente());
+
+        return cliente;
+
+    }
+
+    //mapear de cliente a clienteDto
+    public  ClienteDto mapearClienteAClienteDto(@Valid Cliente cliente){
+        ClienteDto clienteDto = new ClienteDto();
+
+        clienteDto.setCedulaCliente(cliente.getCedulaCliente());
+        clienteDto.setNombreCliente(cliente.getNombreCliente());
+        clienteDto.setApellidoCliente(cliente.getApellidoCliente());
+        clienteDto.setCelularCliente(cliente.getCelularCliente());
+        clienteDto.setCiudad(cliente.getCiudad());
+        clienteDto.setDireccionResidencia(cliente.getDireccionResidencia());
+        clienteDto.setEmailCliente(cliente.getEmailCliente());
+
+        return clienteDto;
+    }
+
 }
+

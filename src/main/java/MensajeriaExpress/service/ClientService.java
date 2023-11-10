@@ -4,11 +4,9 @@ import MensajeriaExpress.Dto.ClienteDto;
 import MensajeriaExpress.entity.Cliente;
 
 import MensajeriaExpress.repository.ClienteRepository;
-import MensajeriaExpress.repository.IClientRepository;
-import jakarta.validation.Valid;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.ErrorResponseException;
 
 
 import java.util.ArrayList;
@@ -16,22 +14,24 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ClientService implements IClientRepository {
+public class ClientService {
 
-
-
+    public List<Cliente> clientes;
     private final ClienteRepository clienteRepository;
+
     @Autowired
     public ClientService(ClienteRepository clienteRepository) {
+
         this.clienteRepository = clienteRepository;
+        this.clientes = new ArrayList<>();
     }
 
-    /*public ClienteDto addCliente(ClienteDto clienteDTO){
+    public ClienteDto addCliente(ClienteDto clienteDTO) {
 
-        if(clienteDTO == null){
+        if (clienteDTO == null) {
             throw new Error("El cliente no puede ser nulo ");
         }
-        if(clienteDTO.getCedulaCliente() == null || clienteDTO.getApellidoCliente() == null || clienteDTO.getNombreCliente() == null){
+        if (clienteDTO.getCedulaCliente() == null || clienteDTO.getApellidoCliente() == null || clienteDTO.getNombreCliente() == null) {
             throw new Error("la cedula, el apellido o el nombre son invalidos");
         }
 
@@ -47,36 +47,43 @@ public class ClientService implements IClientRepository {
 
         clienteRepository.save(cliente);
         return clienteDTO;
-    }*/
+    }
 
-
-    @Override
     public List<Cliente> getAllClientes() {
         return clienteRepository.findAll();
     }
 
-    @Override
     public Cliente findClienteById(Integer cedulaCliente) {
         Optional<Cliente> client = clienteRepository.findById(cedulaCliente);
         return client.orElse(null);
     }
 
-    public Cliente addCliente(@Valid Cliente cliente) {
-        return clienteRepository.save(cliente);
-    }
-
-    @Override
+    @Transactional
     public Cliente updateCliente(Integer cedulaCliente, Cliente cliente) {
-        if (clienteRepository.existsById(cedulaCliente)) {
-            cliente.setCedulaCliente(cedulaCliente);
-            return clienteRepository.save(cliente);
+        if (cliente == null){
+            throw new IllegalArgumentException("El cliente no debe ser nulo");
         }
-        return null;
+        if (!clienteRepository.existsById(cedulaCliente)) {
+            throw new IllegalArgumentException("No existe el cliente con id "+cedulaCliente);
+        }
+
+
+        return clienteRepository.save(cliente);
+
     }
 
-    @Override
-    public void deleteCliente(Integer id) {
-        clienteRepository.deleteById(id);
+    public void deleteCliente(Integer cedulaCliente) {
+        if (cedulaCliente == null){
+            throw new IllegalArgumentException("la ceudña no debe ser nula");
+        }
+        Optional<Cliente> cliente = this.clienteRepository.findById(cedulaCliente);
 
+        if (cliente.isEmpty()){
+            throw new IllegalArgumentException("el cliente con la cedula" + cedulaCliente + "no existe");
+        }
+
+        Cliente clienteEncontrado = cliente.get();
+        clienteRepository.delete(cliente.get());
     }
 }
+

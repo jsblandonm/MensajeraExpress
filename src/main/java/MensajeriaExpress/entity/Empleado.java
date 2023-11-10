@@ -89,4 +89,17 @@ public class Empleado{
         this.tipo = tipo;
         this.envios = envios;
     }
+
+    public Empleado(Integer cedulaEmpleado, String nombreEmpleado, String apellidoEmpleado, String celularEmpleado, String email, String direccionResidencia, String ciudad, Integer antiguedadEmpresa, String tipoSangre, tipoEmpleado tipo) {
+        this.cedulaEmpleado = cedulaEmpleado;
+        this.nombreEmpleado = nombreEmpleado;
+        this.apellidoEmpleado = apellidoEmpleado;
+        this.celularEmpleado = celularEmpleado;
+        this.email = email;
+        this.direccionResidencia = direccionResidencia;
+        this.ciudad = ciudad;
+        this.antiguedadEmpresa = antiguedadEmpresa;
+        this.tipoSangre = tipoSangre;
+        this.tipo = tipo;
+    }
 }

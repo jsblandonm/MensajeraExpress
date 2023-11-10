@@ -5,7 +5,7 @@ public class ClienteDto {
     private Integer cedulaCliente;
     private String nombreCliente;
     private String apellidoCliente;
-    private Integer celularCliente;
+    private String celularCliente;
     private String emailCliente;
 
     private String direccionResidencia;
@@ -14,7 +14,7 @@ public class ClienteDto {
     public ClienteDto() {
     }
 
-    public ClienteDto(Integer cedulaCliente, String nombreCliente, String apellidoCliente, Integer celularCliente, String emailCliente, String direccionResidencia, String ciudad) {
+    public ClienteDto(Integer cedulaCliente, String nombreCliente, String apellidoCliente, String celularCliente, String emailCliente, String direccionResidencia, String ciudad) {
         this.cedulaCliente = cedulaCliente;
         this.nombreCliente = nombreCliente;
         this.apellidoCliente = apellidoCliente;
@@ -48,11 +48,11 @@ public class ClienteDto {
         this.apellidoCliente = apellidoCliente;
     }
 
-    public Integer getCelularCliente() {
+    public String getCelularCliente() {
         return celularCliente;
     }
 
-    public void setCelularCliente(Integer celularCliente) {
+    public void setCelularCliente(String celularCliente) {
         this.celularCliente = celularCliente;
     }
 

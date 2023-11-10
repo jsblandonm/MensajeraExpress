@@ -1,11 +1,18 @@
 package MensajeriaExpress.Dto;
 
+import MensajeriaExpress.entity.Envio;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
+import java.time.LocalDate;
+
 public class EnvioDto {
 
     private Long numeroGuia;
     private  Integer clienteId;
     private String  ciudadOrigen;
     private String ciudadDestino;
+    private String direccionDestino;
     private String destinatario;
     private String celularDestinatario;
     private String horaEntrega;
@@ -16,11 +23,12 @@ public class EnvioDto {
     public EnvioDto() {
     }
 
-    public EnvioDto(Long numeroGuia, Integer clienteId, String ciudadOrigen, String ciudadDestino, String destinatario, String celularDestinatario, String horaEntrega, String estado, Double valorEnvio, Integer idPaquete) {
+    public EnvioDto(Long numeroGuia, Integer clienteId, String ciudadOrigen, String ciudadDestino, String direccionDestino, String destinatario, String celularDestinatario, String horaEntrega, String estado, Double valorEnvio, Integer idPaquete) {
         this.numeroGuia = numeroGuia;
         this.clienteId = clienteId;
         this.ciudadOrigen = ciudadOrigen;
         this.ciudadDestino = ciudadDestino;
+        this.direccionDestino = direccionDestino;
         this.destinatario = destinatario;
         this.celularDestinatario = celularDestinatario;
         this.horaEntrega = horaEntrega;
@@ -61,6 +69,14 @@ public class EnvioDto {
         this.ciudadDestino = ciudadDestino;
     }
 
+    public String getDireccionDestino() {
+        return direccionDestino;
+    }
+
+    public void setDireccionDestino(String direccionDestino) {
+        this.direccionDestino = direccionDestino;
+    }
+
     public String getDestinatario() {
         return destinatario;
     }
@@ -77,7 +93,7 @@ public class EnvioDto {
         this.celularDestinatario = celularDestinatario;
     }
 
-    public String getHoraEntrega() {
+    public @NotNull @Size(max = 50) LocalDate getHoraEntrega() {
         return horaEntrega;
     }
 
@@ -85,7 +101,7 @@ public class EnvioDto {
         this.horaEntrega = horaEntrega;
     }
 
-    public String getEstado() {
+    public Envio.@NotNull estadoEnvio getEstado() {
         return estado;
     }
 

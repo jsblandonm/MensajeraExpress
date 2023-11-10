@@ -83,7 +83,6 @@ public class Envio {
     private Empleado empleado;
 
 
-
     @OneToMany(mappedBy = "envio")
     @JsonIgnore
     private List<Paquete> paquetes;
@@ -106,5 +105,19 @@ public class Envio {
         this.idPaquete = idPaquete;
         this.cliente = cliente;
         this.empleado = empleado;
+    }
+
+    public Envio(Long numeroGuia, Integer clienteId, String ciudadOrigen, String ciudadDestino, String direccionDestino, String destinatario, String celularDestinatario, LocalDate horaEntrega, estadoEnvio estado, Double valorEnvio, Integer idPaquete) {
+        this.numeroGuia = numeroGuia;
+        this.clienteId = clienteId;
+        this.ciudadOrigen = ciudadOrigen;
+        this.ciudadDestino = ciudadDestino;
+        this.direccionDestino = direccionDestino;
+        this.destinatario = destinatario;
+        this.celularDestinatario = celularDestinatario;
+        this.horaEntrega = horaEntrega;
+        this.estado = estado;
+        this.valorEnvio = valorEnvio;
+        this.idPaquete = idPaquete;
     }
 }
