@@ -33,6 +33,7 @@ Este proyecto es una API REST diseñada para un sistema de mensajería de paquet
 - **Spring Boot Test 🛠️**
 - **Mockito JUnit Jupiter 🃏**
 - **Spring Boot Starter Security 🔒**
+  
 Este conjunto de tecnologías ofrece un entorno sólido y eficiente para el desarrollo de envíos de paquetes con Spring Boot, asegurando calidad, mantenibilidad y escalabilidad del proyecto.
 
 ### Antes de Comenzar
@@ -42,7 +43,8 @@ Asegúrate de tener las siguientes herramientas y dependencias instaladas antes 
 - Java JDK
 - Maven
 - MySQL
-- 
+
+  
 ## Instalación
 
 1. Clona el repositorio: `git clone tps://github.com/jsblandonm/MensajeraExpress`
