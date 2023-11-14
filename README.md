@@ -28,7 +28,6 @@ Este proyecto es una API REST diseñada para un sistema de mensajería de paquet
 - **Lombok ⚙️**
 - **Spring Boot Starter Data JPA y Spring Boot Starter Web 🔄**
 - **Spring Boot Starter Test 🧪**
-- **Log4j 📜**
 - **JUnit Jupiter API 🧾**
 - **Spring Boot Test 🛠️**
 - **Mockito JUnit Jupiter 🃏**
