@@ -68,6 +68,7 @@ email: Dirección de correo electrónico del cliente (cadena de texto)
 dirResidencia: Dirección de residencia del cliente (cadena de texto)
 ciudad: Ciudad de residencia del cliente (cadena de texto)
 
+```java 
 {
   "cedula": 12345678,
   "nombre": "Sebastian",
@@ -77,7 +78,7 @@ ciudad: Ciudad de residencia del cliente (cadena de texto)
   "direccionResidencia": "av12-34",
   "ciudad": "Medellin"
 }
-
+```
 
 ## Contribuir
 
