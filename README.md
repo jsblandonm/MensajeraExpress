@@ -205,7 +205,6 @@ Ejemplo de solicitud:
     "tipo": "String"
 }
 ```
-
 La API devolverá el nuevo empleado creado en formato JSON:
 ```json
 {
@@ -226,13 +225,9 @@ La API devolverá el nuevo empleado creado en formato JSON:
  🕵 Este endpoint permite  **buscar** un empleado por cédula, es una funcionalidad que permite a los usuarios obtener los datos de un empleado en particular utilizando su número de identificación.
 
 ##### Parámetros de entrada:
-
 - cedula: cedula del cliente (numero)
-
 Ejemplo de solicitud:
-
 ```(http://localhost:8080/empleados/123456789)```
-
 La API devolverá el empleado encontrado en formato JSON:
 ```json
 {
@@ -248,7 +243,6 @@ La API devolverá el empleado encontrado en formato JSON:
     "tipo": "COORDINADOR"
 }
 ```
-
 ### PUT: http://localhost:8080/empleados/{cedula}
 
 ♻ Este endpoint permite  **actualizar** los datos de un empleado es una funcionalidad que permite a los usuarios modificar la información de un empleado existente en la base de datos.
