@@ -57,7 +57,7 @@ Tecnologías
 
 ## Endpoint de creación de cliente 🙋
 
-## POST  http://localhost:8080/clientes
+## POST:  http://localhost:8080/clientes
 
 ##### Parámetros de entrada:
 
@@ -92,6 +92,72 @@ La API devolverá el nuevo cliente creado en formato JSON:
   "celular": "3165778789",
   "email": "sebastian123@mail.com",
   "direccionResidencia": "av12-34",
+  "ciudad": "Medellin"
+}
+```
+
+### GET: http://localhost:8080/clientes/(cedula)
+
+ 🕵 Este endpoint permite  **buscar** un cliente por cédula, es una funcionalidad que permite a los usuarios obtener los datos de un cliente en particular utilizando su número de identificación.
+
+##### Parámetros de entrada:
+
+- cedula: cedula del cliente (numero)
+
+Ejemplo de solicitud:
+
+```(http://localhost:8080/clientes/12345678)```
+
+La API devolverá el cliente encontrado en formato JSON:
+```java 
+{
+  "cedula": 12345678,
+  "nombre": "Sebastian",
+  "apellido": "Blandon",
+  "celular": "3165778789",
+  "email": "sebastian123@mail.com",
+  "direccionResidencia": "av12-34",
+  "ciudad": "Medellin"
+}
+```
+### PUT: http://localhost:8080/clientes/{cedula}
+
+♻ Este endpoint permite  **actualizar** los datos de un cliente es una funcionalidad que permite a los usuarios modificar la información de un cliente existente en la base de datos.
+
+##### Parámetros de entrada:
+
+- cedula: Cédula del cliente (número entero)
+- nombre: Nombre del cliente (cadena de texto)
+- apellido: Apellido del cliente (cadena de texto)
+- celular: Número de celular del cliente (cadena de texto)
+- email: Dirección de correo electrónico del cliente (cadena de texto)
+- dirResidencia: Dirección de residencia del cliente (cadena de texto)
+- ciudad: Ciudad de residencia del cliente (cadena de texto)
+
+Ejemplo de solicitud:
+
+```(http://localhost:8080/clientes/12345678)```
+```java 
+{
+"cedula": Integer,
+"nombre": String,
+"apellido": String,
+"celular": "String",
+"email": "String",
+"direccionResidencia": "String",
+"ciudad": "String"
+}
+```
+
+La API devolverá el cliente actualizado en formato JSON:
+```java 
+{
+  "cedula": 12345678,
+  "nombre": "Sebastian",
+  "apellido": "Yatra",
+  "celular": "3165778789",
+  "email": "sebastian123@mail.com",
+  "direccionResidencia": "calle 59-18",
   "ciudad": "Medellin"
 }
 ```
