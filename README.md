@@ -53,6 +53,31 @@ Asegúrate de tener las siguientes herramientas y dependencias instaladas antes 
 5. Ejecuta el comando `mvn spring-boot:run` para iniciar la aplicación.
 Tecnologías
 
+## 💻 Endpoints:
+
+## Endpoint de creación de cliente 🙋
+
+## POST  http://localhost:8080/clientes
+
+Parámetros de entrada:
+cedula: Cédula del cliente (número entero)
+nombre: Nombre del cliente (cadena de texto)
+apellido: Apellido del cliente (cadena de texto)
+celular: Número de celular del cliente (cadena de texto)
+email: Dirección de correo electrónico del cliente (cadena de texto)
+dirResidencia: Dirección de residencia del cliente (cadena de texto)
+ciudad: Ciudad de residencia del cliente (cadena de texto)
+
+{
+  "cedula": 12345678,
+  "nombre": "Sebastian",
+  "apellido": "Blandon",
+  "celular": "3165778789",
+  "email": "sebastian123@mail.com",
+  "direccionResidencia": "av12-34",
+  "ciudad": "Medellin"
+}
+
 
 ## Contribuir
 
