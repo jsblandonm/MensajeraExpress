@@ -218,9 +218,99 @@ La API devolverá el nuevo empleado creado en formato JSON:
     "ciudad": "Bogota",
     "antiguedadEmpresa": 2,
     "tipoSangre": "A+",
-    "tipo": "Administrativo"
+    "tipo": "COORDINADOR"
 }
 ```
+### GET: http://localhost:8080/empleados/{cedula}
+
+ 🕵 Este endpoint permite  **buscar** un empleado por cédula, es una funcionalidad que permite a los usuarios obtener los datos de un empleado en particular utilizando su número de identificación.
+
+##### Parámetros de entrada:
+
+- cedula: cedula del cliente (numero)
+
+Ejemplo de solicitud:
+
+```(http://localhost:8080/empleados/123456789)```
+
+La API devolverá el empleado encontrado en formato JSON:
+```json
+{
+    "cedula": 123456789,
+    "nombre": "Fernanda",
+    "apellido": "Pantoja",
+    "celular": "3111117890",
+    "email": "fernanda@example.com",
+    "direccionResidencia": "calle 51 80-25",
+    "ciudad": "Bogota",
+    "antiguedadEmpresa": 2,
+    "tipoSangre": "A+",
+    "tipo": "COORDINADOR"
+}
+```
+
+### PUT: http://localhost:8080/empleados/{cedula}
+
+♻ Este endpoint permite  **actualizar** los datos de un empleado es una funcionalidad que permite a los usuarios modificar la información de un empleado existente en la base de datos.
+
+- cedula: cedula del empleado (numero)
+- nombre: nombre del empleado (cadena de texto)
+- apellido: apellido del empleado (cadena de texto)
+- celular: número de celular del empleado(cadena de texto)
+- email: dirección de correo electrónico del empleado (cadena de texto)
+- direccionResidencia: direccion del empleado (cadena de texto)
+- ciudad: ciudad de residencia (cadena de texto)
+- antiguedad: tiempo que lleva trabajando en la empresa (numeros decimales)
+- tipoSangre: tipo de sangre (cadena de texto)
+- tipo: tipo de trabajo de desempeña, puede ser REPARTIDOR - COORDINADO (cadena de texto)
+
+Ejemplo de solicitud:
+
+```(http://localhost:8080/empleados/123456789)```
+
+```java 
+{
+    "cedula": Integer,
+    "nombre": "String",
+    "apellido": "String",
+    "celular": "String",
+    "email": "String",
+    "direccionResidencia": "String",
+    "ciudad": "String",
+    "antiguedadEmpresa": Integer,
+    "tipoSangre": "String",
+    "tipo": "String"
+}
+```
+
+La API devolverá el nuevo empleado creado en formato JSON:
+```json
+{
+    "cedula": 123456789,
+    "nombre": "Fernanda",
+    "apellido": "Pantoja",
+    "celular": "3111117890",
+    "email": "fernanda@example.com",
+    "direccionResidencia": "calle 51 80-25",
+    "ciudad": "Bogota",
+    "antiguedadEmpresa": 2,
+    "tipoSangre": "A+",
+    "tipo": "COORDINADOR"
+}
+```
+
+### DELETE: http://localhost:8080/empleados/{cedula}
+
+❌ Este endpoint permite  **eliminar** un empleado es una funcionalidad que permite a los usuarios eliminar los datos de un empleado existente en la base de datos. Tenga en cuenta que solo se podrá eliminar si este cliente no tiene asociado un envio.
+
+##### Parámetros de entrada:
+
+- cedula: cedula del empleado (numero)
+
+Ejemplo de solicitud:
+
+```(http://localhost:8080/empleados/123456789)```
+
 ## Contribuir
 
 Si deseas contribuir al proyecto, sigue estos pasos:
