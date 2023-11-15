@@ -160,7 +160,17 @@ La API devolverá el cliente actualizado en formato JSON:
   "ciudad": "Medellin"
 }
 ```
+### DELETE: http://localhost:8080/clientes/{cedula}
 
+❌ Este endpoint permite  **eliminar** un cliente es una funcionalidad que permite a los usuarios eliminar los datos de un cliente existente en la base de datos. Tenga en cuenta que solo se podrá eliminar si este cliente no tiene asociado un envio.
+
+##### Parámetros de entrada:
+
+- cedula: cedula del cliente (numero)
+
+Ejemplo de solicitud:
+
+```(http://localhost:8080/clientes/12345678)```
 ## Contribuir
 
 Si deseas contribuir al proyecto, sigue estos pasos:
