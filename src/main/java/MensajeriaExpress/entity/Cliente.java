@@ -2,41 +2,48 @@ package MensajeriaExpress.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Set;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "Clientes")
 public class Cliente {
+
     @Id
-    @NotNull
-    //@Max(value = 15, message = "El valor maximo para la cedula es de 10 digitos")
     @Column(name = "identificacion_cliente")
     private Integer cedulaCliente;
 
     @NotNull
     @Size(max = 50)
     @Column(name = "nombre_cliente")
-    private String nombreCliente;
+    private String nombre;
 
     @NotNull
     @Size(max = 50)
     @Column(name = "apellido_cliente")
-    private String apellidoCliente;
+    private String apellido;
 
     @NotNull
     @Size(max = 30)
     @Column(name = "celular_cliente")
-    private String celularCliente;
+    private String celular;
 
     @NotNull
     @Size(max = 50)
     @Column(name = "email_cliente")
-    private String emailCliente;
+    private String email;
 
     @NotNull
     @Size(max = 50)
@@ -48,6 +55,20 @@ public class Cliente {
     @Column(name = "ciudad_cliente")
     private String ciudad;
 
+    /*
+    //Security
+    @NotBlank
+    private String username;
+    @NotBlank
+    private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Role.class, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns =  @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
+     */
+
+
     //Relacion base de datos
 
     @OneToMany(mappedBy = "cliente")
@@ -55,27 +76,14 @@ public class Cliente {
     private List<Envio> envios;
 
 
-    public Cliente() {
-    }
-
-    public Cliente(Integer cedulaCliente, String nombreCliente, String apellidoCliente, String celularCliente, String emailCliente, String direccionResidencia, String ciudad, List<Envio> envios) {
+    public Cliente(Integer cedulaCliente, String nombre, String apellido, String celular, String email, String direccionResidencia, String ciudad) {
         this.cedulaCliente = cedulaCliente;
-        this.nombreCliente = nombreCliente;
-        this.apellidoCliente = apellidoCliente;
-        this.celularCliente = celularCliente;
-        this.emailCliente = emailCliente;
-        this.direccionResidencia = direccionResidencia;
-        this.ciudad = ciudad;
-        this.envios = envios;
-    }
-
-    public Cliente(Integer cedulaCliente, String nombreCliente, String apellidoCliente, String celularCliente, String emailCliente, String direccionResidencia, String ciudad) {
-        this.cedulaCliente = cedulaCliente;
-        this.nombreCliente = nombreCliente;
-        this.apellidoCliente = apellidoCliente;
-        this.celularCliente = celularCliente;
-        this.emailCliente = emailCliente;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.celular = celular;
+        this.email = email;
         this.direccionResidencia = direccionResidencia;
         this.ciudad = ciudad;
     }
+
 }

@@ -3,7 +3,7 @@ package MensajeriaExpress.service;
 
 import MensajeriaExpress.Dto.EmpleadoDto;
 import MensajeriaExpress.entity.Empleado;
-import MensajeriaExpress.repository.EmployableRepository;
+import MensajeriaExpress.repository.EmpleadoRepositry;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,13 +13,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EmployableService{
+public class EmpleadoService {
 
     public List<Empleado> empleados;
-    private final EmployableRepository empleadoRepository;
+    private final EmpleadoRepositry empleadoRepository;
 
     @Autowired
-    public EmployableService(EmployableRepository empleadoRepository) {
+    public EmpleadoService(EmpleadoRepositry empleadoRepository) {
 
         this.empleadoRepository = empleadoRepository;
         this.empleados = new ArrayList<>();
@@ -30,21 +30,21 @@ public class EmployableService{
         if (empleadoDto == null){
             throw new Error("El empleado no puede ser nulo ");
         }
-        if (empleadoDto.getCedulaEmpleado() == null || empleadoDto.getApellidoEmpleado() == null || empleadoDto.getNombreEmpleado() == null) {
+        if (empleadoDto.getCedula() == null || empleadoDto.getNombre() == null || empleadoDto.getApellido() == null) {
             throw new Error("la cedula, el apellido o el nombre son invalidos");
         }
 
         Empleado empleado = new Empleado(
-            empleadoDto.getCedulaEmpleado(),
-            empleadoDto.getNombreEmpleado(),
-            empleadoDto.getApellidoEmpleado(),
-            empleadoDto.getCelularEmpleado(),
+            empleadoDto.getCedula(),
+            empleadoDto.getNombre(),
+            empleadoDto.getApellido(),
+            empleadoDto.getCelular(),
                 empleadoDto.getEmail(),
                 empleadoDto.getDireccionResidencia(),
                 empleadoDto.getCiudad(),
                 empleadoDto.getAntiguedadEmpresa(),
                 empleadoDto.getTipoSangre(),
-                Empleado.tipoEmpleado.COORDINADOR
+                empleadoDto.getTipo()
         );
         empleadoRepository.save(empleado);
         return empleadoDto;

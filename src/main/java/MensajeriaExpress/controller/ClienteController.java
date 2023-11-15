@@ -2,15 +2,20 @@ package MensajeriaExpress.controller;
 
 import MensajeriaExpress.Dto.ClienteDto;
 import MensajeriaExpress.entity.Cliente;
+
+import MensajeriaExpress.repository.ClienteRepository;
 import MensajeriaExpress.service.ClientService;
 import jakarta.validation.Valid;
 import org.apache.catalina.connector.ClientAbortException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/clientes")
@@ -19,15 +24,13 @@ public class ClienteController {
     private final ClientService clienteService;
 
     @Autowired
+    private ClienteRepository clienteRepository;
+
+    @Autowired
     public ClienteController(ClientService clienteService) {
+
         this.clienteService = clienteService;
     }
-
-    /*@ApiResponse(value = {
-            @ApiResponse(code = 200, message = "Su solicitud se ha procesado correctamente"),
-            @ApiResponse(code = 404, message = " El servidor no ha podido encontrar el recurso solicitado, intene nuevamente"),
-            @ApiResponse(code = 500, message = "Lo sentimos, ha habido un error interno en el servidor, no ha sido posible procesar la solicitud.")
-    })*/
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -74,13 +77,13 @@ public class ClienteController {
     private Cliente mapearClienteDtoACliente(ClienteDto clienteDto){
         Cliente cliente = new Cliente();
 
-        cliente.setCedulaCliente(clienteDto.getCedulaCliente());
-        cliente.setNombreCliente(clienteDto.getNombreCliente());
-        cliente.setApellidoCliente(clienteDto.getApellidoCliente());
-        cliente.setCelularCliente(clienteDto.getCelularCliente());
+        cliente.setCedulaCliente(clienteDto.getCedula());
+        cliente.setNombre(clienteDto.getNombre());
+        cliente.setApellido(clienteDto.getApellido());
+        cliente.setCelular(clienteDto.getCelular());
         cliente.setDireccionResidencia(clienteDto.getDireccionResidencia());
         cliente.setCiudad(clienteDto.getCiudad());
-        cliente.setEmailCliente(clienteDto.getEmailCliente());
+        cliente.setEmail(clienteDto.getEmail());
 
         return cliente;
 
@@ -90,14 +93,13 @@ public class ClienteController {
     public  ClienteDto mapearClienteAClienteDto(@Valid Cliente cliente){
         ClienteDto clienteDto = new ClienteDto();
 
-        clienteDto.setCedulaCliente(cliente.getCedulaCliente());
-        clienteDto.setNombreCliente(cliente.getNombreCliente());
-        clienteDto.setApellidoCliente(cliente.getApellidoCliente());
-        clienteDto.setCelularCliente(cliente.getCelularCliente());
+        clienteDto.setCedula(cliente.getCedulaCliente());
+        clienteDto.setNombre(cliente.getNombre());
+        clienteDto.setApellido(cliente.getApellido());
+        clienteDto.setCelular(cliente.getCelular());
         clienteDto.setCiudad(cliente.getCiudad());
         clienteDto.setDireccionResidencia(cliente.getDireccionResidencia());
-        clienteDto.setEmailCliente(cliente.getEmailCliente());
-
+        clienteDto.setEmail(cliente.getEmail());
         return clienteDto;
     }
 

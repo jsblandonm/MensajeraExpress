@@ -1,12 +1,16 @@
 
 package MensajeriaExpress.controller;
 
+import MensajeriaExpress.Dto.EnvioCambiarEstadoDto;
+import MensajeriaExpress.Dto.EnvioCreadoDto;
+import MensajeriaExpress.Dto.EnvioDetalleDto;
 import MensajeriaExpress.Dto.EnvioDto;
 import MensajeriaExpress.entity.Envio;
 import MensajeriaExpress.service.EnvioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,81 +28,48 @@ public class EnvioController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public EnvioDto crearEnvio(@Valid @RequestBody EnvioDto envioDto) {
-        return envioService.addEnvio(envioDto);
+    public EnvioCreadoDto create(@Valid @RequestBody EnvioDto envioDto) {
+        return envioService.create(envioDto);
     }
-
-    @GetMapping
-    public List<Envio> listarEnvios() {
-        return envioService.getAllEnvios();
-    }
-
-    @GetMapping("/{numeroGuia}")
-    public EnvioDto obtenerEnvio(@PathVariable Long numeroGuia) {
-        Envio envio = envioService.findById(numeroGuia);
-
-        if (envio == null){
-            throw new Error("No existe envio con el nuero de guia " + numeroGuia);
-        }
-
-        return mapearEnvioAEnvioDto(numeroGuia);
-    }
-
 
     @PutMapping("/{numeroGuia}")
-    public EnvioDto actualizarEnvio(@PathVariable Long numeroGuia, @RequestBody EnvioDto envioDto) {
+    public EnvioCreadoDto changeState(@PathVariable Integer numeroGuia,@RequestBody EnvioCambiarEstadoDto envioCambiarEstadoDto) {
         if (numeroGuia == null){
             throw  new IllegalArgumentException("El numero de la guia es requerido");
         }
-        Envio envio = mapearEnvioDtoAEnvio(envioDto);
-        envio = envioService.updateEnvio(numeroGuia,envio);
-        return mapearEnvioAEnvioDto(envio);
+        return envioService.changeState(envioCambiarEstadoDto);
     }
 
-    @DeleteMapping("/{numeroGuia}")
-    public void eliminarEnvio(@PathVariable Long numeroGuia) {
+    @GetMapping("/detalle/{numeroGuia}")
+    public EnvioDetalleDto search(@PathVariable Integer numeroGuia) {
+        EnvioDetalleDto envioDetalleDto = envioService.search(numeroGuia);
+        if (envioDetalleDto != null) {
+            return envioDetalleDto;
+            //return ResponseEntity.ok(envioDetalleDto);
+        } else {
+            return null;
+            //return ResponseEntity.notFound().build();
+        }
 
-        envioService.deleteEnvio(numeroGuia);
+        //return envioService.search(numeroGuia);
     }
 
-    private Envio mapearEnvioDtoAEnvio(EnvioDto envioDto){
-        Envio envio = new Envio();
+    @GetMapping("/filtro/{estado}")
+    public List<Envio> filter(@PathVariable ("estado") String estado) {
 
-        envio.setNumeroGuia(envioDto.getNumeroGuia());
-        envio.setClienteId(envioDto.getClienteId());
-        envio.setCiudadDestino(envioDto.getCiudadDestino());
-        envio.setCiudadOrigen(envioDto.getCiudadOrigen());
-        envio.setDireccionDestino(envioDto.getDireccionDestino());
-        envio.setDestinatario(envioDto.getDestinatario());
-        envio.setCelularDestinatario(envioDto.getCelularDestinatario());
-        envio.setHoraEntrega(envioDto.getHoraEntrega());
-        envio.setEstado(envioDto.getEstado());
-        envio.setValorEnvio(envioDto.getValorEnvio());
-        envio.setIdPaquete(envioDto.getIdPaquete());
-        //envio.setCliente(envioDto.getCliente());
-        //envio.setEmpleado(envioDto.getEmpleado());
+        List<Envio> envios = envioService.filter(estado);
 
-        return envio;
-    }
+        if (!envios.isEmpty()) {
+            return envios;
+            //return ResponseEntity.ok(envios);
+        } else {
+            return  null;
+            //return ResponseEntity.noContent().build();
+        }
 
-    private EnvioDto mapearEnvioAEnvioDto(Envio envio){
-        EnvioDto envioDto = new EnvioDto();
-
-        envioDto.setNumeroGuia(envio.getNumeroGuia());
-        envioDto.setClienteId(envio.getClienteId());
-        envioDto.setCiudadDestino(envio.getCiudadDestino());
-        envioDto.setCiudadOrigen(envio.getCiudadOrigen());
-        envioDto.setDireccionDestino(envio.getDireccionDestino());
-        envioDto.setDestinatario(envio.getDestinatario());
-        envioDto.setCelularDestinatario(envio.getCelularDestinatario());
-        envioDto.setHoraEntrega(String.valueOf(envio.getHoraEntrega()));
-        envioDto.setEstado(String.valueOf(Envio.estadoEnvio.ENRUTA));
-        envioDto.setValorEnvio(envio.getValorEnvio());
-        envioDto.setIdPaquete(envio.getIdPaquete());
-        //envioDto.setCliente(envio.getCliente());
-        //envioDto.setEmpleado(envio.getEmpleado());
-
-        return envioDto;
+        //return envioService.filter(estado);
     }
 
 }
+
+

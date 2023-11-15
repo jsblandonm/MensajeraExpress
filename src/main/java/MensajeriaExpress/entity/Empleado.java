@@ -14,24 +14,23 @@ import java.util.List;
 public class Empleado{
 
     @Id
-    @NotNull
     @Column(name = "identificacion_empleado")
     private Integer cedulaEmpleado;
 
     @NotNull
     @Size(max = 30)
     @Column(name = "nombre_empleado")
-    private String nombreEmpleado;
+    private String nombre;
 
     @NotNull
     @Size(max = 30)
     @Column(name = "apellido_empleado")
-    private String apellidoEmpleado;
+    private String apellido;
 
     @NotNull
     @Size(max = 50)
     @Column(name = "celular_empleado")
-    private String celularEmpleado;
+    private String celular;
 
     @NotNull
     @Size(max = 100)
@@ -57,15 +56,25 @@ public class Empleado{
     @Column(name = "tipoSangre_empleado")
     private String tipoSangre;
 
-    @NotNull
-    @Enumerated(EnumType.STRING)
     @Column(name = "tipo-Empleado")
-    private tipoEmpleado tipo;
-    public enum tipoEmpleado{
-        CONDUCTOR, REPARTIDOR, COORDINADOR
+    private String tipo;
+
+
+/*
+    @Column(name="tipo_empleado")
+    @Enumerated(EnumType.STRING)
+    private TipoEmpleado tipoEmpleado;
+
+    public enum TipoEmpleado {
+        CONDUCTOR,
+        REPARTIDOR,
+        COORDINADOR
     }
 
-    //Relaciones base de datos
+
+ */
+
+        //Relaciones base de datos
 
     @OneToMany(mappedBy = "empleado")
     @JsonIgnore
@@ -76,11 +85,11 @@ public class Empleado{
 
     }
 
-    public Empleado(Integer cedulaEmpleado, String nombreEmpleado, String apellidoEmpleado, String  celularEmpleado, String email, String direccionResidencia, String ciudad, Integer antiguedadEmpresa, String tipoSangre, tipoEmpleado tipo, List<Envio> envios) {
+    public Empleado(Integer cedulaEmpleado, String nombre, String apellido, String celular, String email, String direccionResidencia, String ciudad, Integer antiguedadEmpresa, String tipoSangre, String tipo, List<Envio> envios) {
         this.cedulaEmpleado = cedulaEmpleado;
-        this.nombreEmpleado = nombreEmpleado;
-        this.apellidoEmpleado = apellidoEmpleado;
-        this.celularEmpleado = celularEmpleado;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.celular = celular;
         this.email = email;
         this.direccionResidencia = direccionResidencia;
         this.ciudad = ciudad;
@@ -90,11 +99,11 @@ public class Empleado{
         this.envios = envios;
     }
 
-    public Empleado(Integer cedulaEmpleado, String nombreEmpleado, String apellidoEmpleado, String celularEmpleado, String email, String direccionResidencia, String ciudad, Integer antiguedadEmpresa, String tipoSangre, tipoEmpleado tipo) {
+    public Empleado(Integer cedulaEmpleado, String nombre, String apellido, String celular, String email, String direccionResidencia, String ciudad, Integer antiguedadEmpresa, String tipoSangre, String tipo) {
         this.cedulaEmpleado = cedulaEmpleado;
-        this.nombreEmpleado = nombreEmpleado;
-        this.apellidoEmpleado = apellidoEmpleado;
-        this.celularEmpleado = celularEmpleado;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.celular = celular;
         this.email = email;
         this.direccionResidencia = direccionResidencia;
         this.ciudad = ciudad;

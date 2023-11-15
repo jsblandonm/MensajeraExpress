@@ -2,7 +2,7 @@ package MensajeriaExpress.controller;
 
 import MensajeriaExpress.Dto.EmpleadoDto;
 import MensajeriaExpress.entity.Empleado;
-import MensajeriaExpress.service.EmployableService;
+import MensajeriaExpress.service.EmpleadoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,10 +14,10 @@ import java.util.List;
 @RequestMapping("/empleados")
 public class EmpleadoController {
 
-    private final EmployableService empleadoService;
+    private final EmpleadoService empleadoService;
 
     @Autowired
-    public EmpleadoController(EmployableService empleadoService) {
+    public EmpleadoController(EmpleadoService empleadoService) {
         this.empleadoService = empleadoService;
     }
 
@@ -65,27 +65,26 @@ public class EmpleadoController {
     public Empleado maperaEmpleadoDtoAEmpleado(@Valid EmpleadoDto empleadoDto){
         Empleado empleado = new Empleado();
 
-        empleado.setCedulaEmpleado(empleadoDto.getCedulaEmpleado());
-        empleado.setNombreEmpleado(empleadoDto.getNombreEmpleado());
-        empleado.setApellidoEmpleado(empleadoDto.getApellidoEmpleado());
-        empleado.setCelularEmpleado(empleadoDto.getCelularEmpleado());
+        empleado.setCedulaEmpleado(empleadoDto.getCedula());
+        empleado.setNombre(empleadoDto.getNombre());
+        empleado.setApellido(empleadoDto.getApellido());
+        empleado.setCelular(empleadoDto.getCelular());
         empleado.setEmail(empleadoDto.getEmail());
         empleado.setAntiguedadEmpresa(empleadoDto.getAntiguedadEmpresa());
         empleado.setCiudad(empleadoDto.getCiudad());
         empleado.setDireccionResidencia(empleadoDto.getDireccionResidencia());
         empleado.setTipoSangre(empleadoDto.getTipoSangre());
-        empleado.setTipo(Empleado.tipoEmpleado.COORDINADOR);
-
+        empleado.setTipo(empleadoDto.getTipo());
         return empleado;
     }
 
    public EmpleadoDto maperaEmpleadoAEmpleadoDto(@Valid Empleado empleado){
         EmpleadoDto empleadoDto = new EmpleadoDto();
 
-        empleadoDto.setCedulaEmpleado(empleado.getCedulaEmpleado());
-       empleadoDto.setNombreEmpleado(empleado.getNombreEmpleado());
-       empleadoDto.setApellidoEmpleado(empleado.getApellidoEmpleado());
-       empleadoDto.setCelularEmpleado(empleado.getCelularEmpleado());
+        empleadoDto.setCedula(empleado.getCedulaEmpleado());
+       empleadoDto.setNombre(empleado.getNombre());
+       empleadoDto.setApellido(empleado.getApellido());
+       empleadoDto.setCelular(empleado.getCelular());
        empleadoDto.setEmail(empleado.getEmail());
        empleadoDto.setAntiguedadEmpresa(empleado.getAntiguedadEmpresa());
        empleadoDto.setCiudad(empleado.getCiudad());

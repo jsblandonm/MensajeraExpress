@@ -8,48 +8,38 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "paquete")
+@Table(name = "paquetes")
 public class Paquete {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codigoPaquete;
+    private Integer codigoPaquete;
 
     @NotNull
-    @Enumerated(EnumType.STRING)
     @Column(name = "tipo-Paquete")
-    private tipoPaquete tipo;
-    public enum tipoPaquete{
-        LIVIANO, MEDIANO, GRANDE
-    }
+    private String tipo;
 
     @NotNull
     @Column(name = "peso_paquete")
-    @Size(max = 10)
     private Double peso;
 
     @NotNull
-    @Size(max = 50)
     @Column(name = "valor_decarado")
     private Double valorDeclarado;
 
     //Relaciones base de datos
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "idPaquete")
+    @JoinColumn(name = "numeroGuia")
     @JsonBackReference
     private Envio envio;
-
-
 
     public Paquete() {
     }
 
-    public Paquete(Long codigoPaquete, tipoPaquete tipo, Double peso, Double valorDeclarado, Envio envio) {
-        this.codigoPaquete = codigoPaquete;
+    public Paquete(String tipo, Double peso, Double valorDeclarado) {
         this.tipo = tipo;
         this.peso = peso;
         this.valorDeclarado = valorDeclarado;
-        this.envio = envio;
     }
 }
