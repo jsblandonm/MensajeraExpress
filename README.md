@@ -11,6 +11,7 @@ Es una plataforma de mensajería de paquetes diseñada para facilitar la entrega
 Este proyecto es una API REST diseñada para un sistema de mensajería de paquetes que permite a los clientes enviar y recibir paquetes a través de una interfaz.
 
 📊📈 Diagramas:
+![UML](https://github.com/jsblandonm/MensajeraExpress/blob/master/uml%20mensajeria.PNG)
 
 ![image](https://github.com/jsblandonm/MensajeraExpress/assets/94935847/cc88201b-b721-4ad5-9ca4-6fdd06374b46)
 
