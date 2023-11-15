@@ -95,7 +95,6 @@ La API devolverá el nuevo cliente creado en formato JSON:
   "ciudad": "Medellin"
 }
 ```
-
 ### GET: http://localhost:8080/clientes/(cedula)
 
  🕵 Este endpoint permite  **buscar** un cliente por cédula, es una funcionalidad que permite a los usuarios obtener los datos de un cliente en particular utilizando su número de identificación.
