@@ -306,6 +306,80 @@ Ejemplo de solicitud:
 
 ```(http://localhost:8080/empleados/123456789)```
 
+## Endpoint de creación de envio :package:
+
+### POST: http://localhost:8080/envios
+
+👩‍💻 Este endpoint que **crea** un envío es una funcionalidad que permite a los usuarios crear un nuevo envío en el sistema. Cuando un usuario realiza una solicitud al endpoint de creación de envío, el servidor procesa la solicitud y crea un nuevo registro de envío en la base de datos.
+
+Para crear un envío, el usuario debe proporcionar información sobre el cliente que está realizando el envío y el paquete que se está enviando. Además, el usuario debe especificar los detalles del lugar de origen y destino del envío.
+
+Una vez que se ha proporcionado toda la información necesaria, el servidor calcula el valor a pagar por el envío en función de los detalles del paquete y los detalles de origen y destino. El valor a pagar puede ser influenciado por factores como el tamaño del paquete, la distancia entre el origen y el destino, el método de envío, entre otros.
+
+Finalmente, el servidor devuelve una respuesta HTTP con un código de respuesta 200 OK indicando que el envío se ha creado correctamente, y un objeto con el número de guía y el estado del paquete
+
+##### Parámetros de entrada:
+
+- cedulaCliente: cedula del cliente (numero)
+- cedulaEmpleado:  cedula del Empleado (numero)
+- ciudadOrigen: ciudad de origen del paquete (cadena de texto)
+- ciudadDestino: ciudad de destino del paquete (cadena de texto)
+- destinatario: nombre de la persona que recibe el paquete (cadena de texto)
+- celularDestinatario : celular del destinatario (numero)
+- peso: peso en kilogramos del paquete (número decimal)
+- valorDeclarado: valor en peso declarado del contenido del paquete (número decimal)
+Ejemplo de solicitud:
+
+```java 
+{
+    "cedulaEmpleado": 123456789,
+    "cedulaCliente": 12345678,
+    "ciudadOrigen": "Medellin",
+    "ciudadDestino": "Bogota",
+    "direccionDestino": "Calle falsa 123",
+    "destinatario": "Jerson Gomez",
+    "celularDestinatario": "987-654-3210",
+    "peso": 5.2,
+    "valorDeclarado": 100.0
+}
+```
+
+La API devolverá el nuevo envio creado en formato JSON:
+```json
+{
+    "numeroGuia": 2,
+    "estado": "RECIBIDO"
+}
+```
+### GET: http://localhost:8080/envios/{numeroGuia}
+
+ 🕵 Este endpoint para **buscar** un envío por número de guía es una funcionalidad que permite a los usuarios buscar información específica sobre un envío registrado en el sistema utilizando su número de guía único. Cuando un usuario realiza una solicitud al endpoint de búsqueda de envío por número de guía, el servidor procesa la solicitud y devuelve la información correspondiente del envío en la base de datos.
+
+##### Parámetros de entrada:
+
+- numGuia: Número de guía del envio (numero)
+
+Ejemplo de solicitud:
+
+```(http://localhost:8080/envios/2)```
+
+La API devolverá el envio encontrado en formato JSON:
+```json
+{
+	"numGuia": 4,
+	"cedulaCliente": 123,
+	"nombreCliente": "vivi",
+	"ciudadOrigen": "Cali",
+	"ciudadDestino": "Medellin",
+	"dirDestino": "poblado",
+	"nombreRecibe": "Juan",
+	"celularRecibe": "23456",
+	"valorDeclarado": 10.5,
+	"peso": 1.5,
+	"valorEnvio": 30000.0
+}
+```
+
 ## Contribuir
 
 Si deseas contribuir al proyecto, sigue estos pasos:
