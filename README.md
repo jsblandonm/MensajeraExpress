@@ -171,6 +171,56 @@ La API devolverá el cliente actualizado en formato JSON:
 Ejemplo de solicitud:
 
 ```(http://localhost:8080/clientes/12345678)```
+### Endpoint de creación de empleado👨‍🔧
+
+### POST: http://localhost:8080/empleados
+
+👨‍🔧 **Crear** un nuevo empleado en la base de datos con la información proporcionada en el cuerpo de la solicitud.
+
+##### Parámetros de entrada:
+
+- cedula: cedula del empleado (numero)
+- nombre: nombre del empleado (cadena de texto)
+- apellido: apellido del empleado (cadena de texto)
+- celular: número de celular del empleado(cadena de texto)
+- email: dirección de correo electrónico del empleado (cadena de texto)
+- direccionResidencia: direccion del empleado (cadena de texto)
+- ciudad: ciudad de residencia (cadena de texto)
+- antiguedad: tiempo que lleva trabajando en la empresa (numeros decimales)
+- tipoSangre: tipo de sangre (cadena de texto)
+- tipo: tipo de trabajo de desempeña, puede ser REPARTIDOR - COORDINADO (cadena de texto)
+Ejemplo de solicitud:
+
+```java 
+{
+    "cedula": Integer,
+    "nombre": "String",
+    "apellido": "String",
+    "celular": "String",
+    "email": "String",
+    "direccionResidencia": "String",
+    "ciudad": "String",
+    "antiguedadEmpresa": Integer,
+    "tipoSangre": "String",
+    "tipo": "String"
+}
+```
+
+La API devolverá el nuevo empleado creado en formato JSON:
+```json
+{
+    "cedula": 123456789,
+    "nombre": "Fernanda",
+    "apellido": "Pantoja",
+    "celular": "3111117890",
+    "email": "fernanda@example.com",
+    "direccionResidencia": "calle 51 80-25",
+    "ciudad": "Bogota",
+    "antiguedadEmpresa": 2,
+    "tipoSangre": "A+",
+    "tipo": "Administrativo"
+}
+```
 ## Contribuir
 
 Si deseas contribuir al proyecto, sigue estos pasos:
