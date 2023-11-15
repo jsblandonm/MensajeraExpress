@@ -366,17 +366,15 @@ Ejemplo de solicitud:
 La API devolverá el envio encontrado en formato JSON:
 ```json
 {
-	"numGuia": 4,
-	"cedulaCliente": 123,
-	"nombreCliente": "vivi",
-	"ciudadOrigen": "Cali",
-	"ciudadDestino": "Medellin",
-	"dirDestino": "poblado",
-	"nombreRecibe": "Juan",
-	"celularRecibe": "23456",
-	"valorDeclarado": 10.5,
-	"peso": 1.5,
-	"valorEnvio": 30000.0
+    "cedulaEmpleado": 123456789,
+    "cedulaCliente": 12345678,
+    "ciudadOrigen": "Medellin",
+    "ciudadDestino": "Bogota",
+    "direccionDestino": "Calle falsa 123",
+    "destinatario": "Jerson Gomez",
+    "celularDestinatario": "987-654-3210",
+    "peso": 5.2,
+    "valorDeclarado": 100.0
 }
 ```
 
