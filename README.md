@@ -189,7 +189,7 @@ Ejemplo de solicitud:
 - ciudad: ciudad de residencia (cadena de texto)
 - antiguedad: tiempo que lleva trabajando en la empresa (numeros decimales)
 - tipoSangre: tipo de sangre (cadena de texto)
-- tipo: tipo de trabajo de desempeña, puede ser REPARTIDOR - COORDINADO (cadena de texto)
+- tipo: tipo de trabajo de desempeña, puede ser REPARTIDOR - COORDINADOR (cadena de texto)
 Ejemplo de solicitud:
 
 ```java 
