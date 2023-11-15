@@ -59,14 +59,30 @@ Tecnologías
 
 ## POST  http://localhost:8080/clientes
 
-Parámetros de entrada:
-cedula: Cédula del cliente (número entero)
-nombre: Nombre del cliente (cadena de texto)
-apellido: Apellido del cliente (cadena de texto)
-celular: Número de celular del cliente (cadena de texto)
-email: Dirección de correo electrónico del cliente (cadena de texto)
-dirResidencia: Dirección de residencia del cliente (cadena de texto)
-ciudad: Ciudad de residencia del cliente (cadena de texto)
+##### Parámetros de entrada:
+
+- cedula: Cédula del cliente (número entero)
+- nombre: Nombre del cliente (cadena de texto)
+- apellido: Apellido del cliente (cadena de texto)
+- celular: Número de celular del cliente (cadena de texto)
+- email: Dirección de correo electrónico del cliente (cadena de texto)
+- dirResidencia: Dirección de residencia del cliente (cadena de texto)
+- ciudad: Ciudad de residencia del cliente (cadena de texto)
+
+Ejemplo de solicitud:
+
+```java 
+{
+"cedula": Integer,
+"nombre": String,
+"apellido": String,
+"celular": "String",
+"email": "String",
+"direccionResidencia": "String",
+"ciudad": "String"
+}
+```
+La API devolverá el nuevo cliente creado en formato JSON:
 
 ```java 
 {
