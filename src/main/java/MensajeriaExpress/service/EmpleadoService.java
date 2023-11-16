@@ -28,10 +28,10 @@ public class EmpleadoService {
     public EmpleadoDto addEmpleado(EmpleadoDto empleadoDto) {
 
         if (empleadoDto == null){
-            throw new Error("El empleado no puede ser nulo ");
+            throw new IllegalArgumentException("El empleado no puede ser nulo ");
         }
         if (empleadoDto.getCedula() == null || empleadoDto.getNombre() == null || empleadoDto.getApellido() == null) {
-            throw new Error("la cedula, el apellido o el nombre son invalidos");
+            throw new IllegalArgumentException("la cedula, el apellido o el nombre son invalidos");
         }
 
         Empleado empleado = new Empleado(
@@ -55,8 +55,13 @@ public class EmpleadoService {
     }
 
     public Empleado findEmpleadoById(Integer cedulaEmpleado) {
+
+        return empleadoRepository.findById(cedulaEmpleado)
+                .orElseThrow(() -> new IllegalArgumentException("No se encontro el empleado"));
+        /*
         Optional<Empleado> employable = empleadoRepository.findById(cedulaEmpleado);
         return employable.orElse(null);
+         */
     }
 
     @Transactional

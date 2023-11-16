@@ -42,4 +42,5 @@ public class Paquete {
         this.peso = peso;
         this.valorDeclarado = valorDeclarado;
     }
+
 }
