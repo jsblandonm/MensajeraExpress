@@ -18,14 +18,13 @@ public class EmpleadoDto {
     private Integer antiguedadEmpresa;
     private String tipoSangre;
     private String tipo;
-    private Role role;
+    //private Role role;
 
     public EmpleadoDto() {
     }
 
-    public EmpleadoDto(Role role,Integer cedula, String nombre, String apellido, String celular, String email, String direccionResidencia, String ciudad, Integer antiguedadEmpresa, String tipoSangre, String tipo) {
+    public EmpleadoDto(Integer cedula, String nombre, String apellido, String celular, String email, String direccionResidencia, String ciudad, Integer antiguedadEmpresa, String tipoSangre, String tipo) {
         this.cedula = cedula;
-        this.role = role;
         this.nombre = nombre;
         this.apellido = apellido;
         this.celular = celular;
