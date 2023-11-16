@@ -23,7 +23,7 @@ public class Cliente  {
 
     @Id
     @Column(name = "identificacion_cliente")
-    @Max(value = 10, message = "La cédula debe ser de 10")
+    //@Max(value = 10, message = "La cédula debe ser de 10")
     private Integer cedulaCliente;
 
     @NotNull

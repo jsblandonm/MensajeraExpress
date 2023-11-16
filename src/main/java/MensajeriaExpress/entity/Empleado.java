@@ -18,7 +18,7 @@ public class Empleado{
 
     @Id
     @Column(name = "identificacion_empleado")
-    @Max(value = 10, message = "la cedula debe ser max de 10")
+    //@Max(value = 10, message = "la cedula debe ser max de 10")
     private Integer cedulaEmpleado;
 
     @NotNull

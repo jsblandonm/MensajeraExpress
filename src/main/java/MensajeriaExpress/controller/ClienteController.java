@@ -41,6 +41,7 @@ public class ClienteController {
         return clienteService.addCliente(cliente);
     }
 
+    @PreAuthorize("hasRole('USER')")
     @GetMapping
     public List<Cliente> getAllClintes(){
         return  clienteService.getAllClientes();

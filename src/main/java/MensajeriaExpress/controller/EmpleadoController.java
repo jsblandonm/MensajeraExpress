@@ -45,7 +45,6 @@ public class EmpleadoController {
 
         return maperaEmpleadoAEmpleadoDto(empleado);
     }
-
     @PutMapping("/{cedulaEmpleado}")
     public EmpleadoDto updateEmpleado(@PathVariable Integer cedulaEmpleado, @Valid @ RequestBody EmpleadoDto empleadoDto){
         if (empleadoDto == null){

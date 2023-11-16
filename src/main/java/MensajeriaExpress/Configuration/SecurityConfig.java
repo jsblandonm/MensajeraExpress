@@ -35,7 +35,9 @@ public class SecurityConfig {
                          authRequest
                                  .requestMatchers("/auth/**", "/swagger-ui/**", "/api-docs/**" , "/empleados/**").permitAll()
                                  .requestMatchers("/empleados/**").hasAnyAuthority("ADMIN")
-                                 .requestMatchers(HttpMethod.GET,"/clientes/**").hasAnyAuthority("USER")
+                                 .requestMatchers(HttpMethod.PUT,"/empleados//{cedulaEmpleado}/**").hasAnyAuthority("ADMIN")
+                                 .requestMatchers("/empleados/**").hasAnyAuthority("ADMIN")
+                                 .requestMatchers(HttpMethod.GET,"/clientes/**").hasAuthority("USER")
                                  .anyRequest().authenticated()
                  )
                  .sessionManagement(sessionManager ->
