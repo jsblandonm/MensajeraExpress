@@ -40,19 +40,7 @@ public class ClientService {
             throw new Error("la cedula, el apellido o el nombre son invalidos");
         }
 
-        /*Set<Role> roles = clienteDTO.getRoles().stream()
-                .map(role -> Role.builder()
-                        .name(ERole.valueOf(role))
-                        .build())
-                .collect(Collectors.toSet());
 
-        Cliente cl = Cliente.builder()
-                .username(clienteDTO.getUsername())
-                .password(clienteDTO.getPassword())
-                .email(clienteDTO.getEmail())
-                .roles(roles)
-                .build();
-*/
 
         Cliente cliente = new Cliente(
                 clienteDTO.getCedula(),

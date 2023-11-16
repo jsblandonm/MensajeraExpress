@@ -1,5 +1,6 @@
 package MensajeriaExpress.entity;
 
+import MensajeriaExpress.User.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -7,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.util.List;
 import java.util.Set;
@@ -17,7 +19,7 @@ import java.util.Set;
 @Builder
 @Entity
 @Table(name = "Clientes")
-public class Cliente {
+public class Cliente  {
 
     @Id
     @Column(name = "identificacion_cliente")
@@ -54,19 +56,6 @@ public class Cliente {
     @Column(name = "ciudad_cliente")
     private String ciudad;
 
-    /*
-    //Security
-    @NotBlank
-    private String username;
-    @NotBlank
-    private String password;
-
-    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Role.class, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns =  @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
-
-     */
-
 
     //Relacion base de datos
 
@@ -83,6 +72,7 @@ public class Cliente {
         this.email = email;
         this.direccionResidencia = direccionResidencia;
         this.ciudad = ciudad;
-    }
 
+
+    }
 }

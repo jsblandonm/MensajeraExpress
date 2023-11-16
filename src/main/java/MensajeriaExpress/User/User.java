@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name="user", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
-public class User implements UserDetails {
+public class User implements UserDetails, GrantedAuthority {
 
     @Id
     @GeneratedValue
@@ -59,5 +59,10 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public String getAuthority() {
+        return role.name();
     }
 }

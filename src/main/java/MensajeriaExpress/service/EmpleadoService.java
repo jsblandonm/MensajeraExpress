@@ -1,11 +1,17 @@
 package MensajeriaExpress.service;
 
 
+import MensajeriaExpress.Dto.ClienteDto;
 import MensajeriaExpress.Dto.EmpleadoDto;
+import MensajeriaExpress.User.User;
+import MensajeriaExpress.entity.Cliente;
 import MensajeriaExpress.entity.Empleado;
 import MensajeriaExpress.repository.EmpleadoRepositry;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,6 +30,41 @@ public class EmpleadoService {
         this.empleadoRepository = empleadoRepository;
         this.empleados = new ArrayList<>();
     }
+
+    public EmpleadoDto obtenerEmpleado(Integer cedulaEmpleado){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) auth.getPrincipal();
+        String role = String.valueOf(user.getRole());
+
+        // Verificar el rol del usuario y realizar operaciones específicas
+        if ("ADMIN".equals(role)) {
+            // Operaciones permitidas para el rol de ADMIN
+            Empleado empleado = empleadoRepository.findById(cedulaEmpleado)
+                    .orElseThrow(() -> new RuntimeException("Empleado no encontrado con ID: " + cedulaEmpleado));
+
+            // Aquí puedes realizar cualquier operación adicional necesaria antes de devolver el DTO
+            return maperaEmpleadoAEmpleadoDto(empleado);
+        } else {
+            // Otros roles pueden tener lógica de negocio diferente o restricciones
+            throw new IllegalArgumentException("Acceso denegado para el usuario con rol: " + role);
+        }
+    }
+
+    public EmpleadoDto maperaEmpleadoAEmpleadoDto(@Valid Empleado empleado){
+        EmpleadoDto empleadoDto = new EmpleadoDto();
+
+        empleadoDto.setCedula(empleado.getCedulaEmpleado());
+        empleadoDto.setNombre(empleado.getNombre());
+        empleadoDto.setApellido(empleado.getApellido());
+        empleadoDto.setCelular(empleado.getCelular());
+        empleadoDto.setCiudad(empleado.getCiudad());
+        empleadoDto.setDireccionResidencia(empleado.getDireccionResidencia());
+        empleadoDto.setEmail(empleado.getEmail());
+
+
+        return empleadoDto;
+    }
+
 
     public EmpleadoDto addEmpleado(EmpleadoDto empleadoDto) {
 

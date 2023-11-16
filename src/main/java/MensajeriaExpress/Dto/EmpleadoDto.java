@@ -1,5 +1,6 @@
 package MensajeriaExpress.Dto;
 
+import MensajeriaExpress.User.Role;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,12 +18,14 @@ public class EmpleadoDto {
     private Integer antiguedadEmpresa;
     private String tipoSangre;
     private String tipo;
+    private Role role;
 
     public EmpleadoDto() {
     }
 
-    public EmpleadoDto(Integer cedula, String nombre, String apellido, String celular, String email, String direccionResidencia, String ciudad, Integer antiguedadEmpresa, String tipoSangre, String tipo) {
+    public EmpleadoDto(Role role,Integer cedula, String nombre, String apellido, String celular, String email, String direccionResidencia, String ciudad, Integer antiguedadEmpresa, String tipoSangre, String tipo) {
         this.cedula = cedula;
+        this.role = role;
         this.nombre = nombre;
         this.apellido = apellido;
         this.celular = celular;

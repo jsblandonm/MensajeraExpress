@@ -1,5 +1,6 @@
 package MensajeriaExpress.entity;
 
+import MensajeriaExpress.User.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
@@ -63,21 +64,8 @@ public class Empleado{
     private String tipo;
 
 
-/*
-    @Column(name="tipo_empleado")
-    @Enumerated(EnumType.STRING)
-    private TipoEmpleado tipoEmpleado;
 
-    public enum TipoEmpleado {
-        CONDUCTOR,
-        REPARTIDOR,
-        COORDINADOR
-    }
-
-
- */
-
-        //Relaciones base de datos
+    //Relaciones base de datos
 
     @OneToMany(mappedBy = "empleado")
     @JsonIgnore

@@ -1,5 +1,6 @@
 package MensajeriaExpress.Dto;
 
+import MensajeriaExpress.User.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -20,19 +21,6 @@ public class ClienteDto {
     private String email;
     private String direccionResidencia;
     private String ciudad;
-
-    /*
-    //Security
-
-    @NotBlank
-    private String username;
-    @NotBlank
-    private String password;
-
-    private Set<String> roles;
-    */
-
-
 
 }
 

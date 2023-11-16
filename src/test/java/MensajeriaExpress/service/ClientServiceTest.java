@@ -1,5 +1,6 @@
 package MensajeriaExpress.service;
 
+import MensajeriaExpress.User.Role;
 import MensajeriaExpress.entity.Cliente;
 
 import MensajeriaExpress.repository.ClienteRepository;
@@ -41,7 +42,7 @@ class ClientServiceTest {
 
         // Act
         Cliente cliente = new Cliente(cedulaCliente, nombreCliente, apellidoCliente, celularCliente,
-                emailCliente, direccionResidencia, ciudad);
+                emailCliente, direccionResidencia, ciudad );
 
         // Assert
         assertNotNull(cliente);

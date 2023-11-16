@@ -2,8 +2,10 @@ package MensajeriaExpress.Configuration;
 
 
 
+import io.swagger.v3.oas.models.PathItem;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -31,7 +33,7 @@ public class SecurityConfig {
                  .csrf(AbstractHttpConfigurer::disable)
                  .authorizeHttpRequests(authRequest ->
                          authRequest
-                                 .requestMatchers("/auth/**").permitAll()
+                                 .requestMatchers("/auth/**", "/swagger-ui/**", "/api-docs/**").permitAll()
                                  .anyRequest().authenticated()
                  )
                  .sessionManagement(sessionManager ->

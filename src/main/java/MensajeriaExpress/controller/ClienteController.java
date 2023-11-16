@@ -6,10 +6,12 @@ import MensajeriaExpress.entity.Cliente;
 import MensajeriaExpress.repository.ClienteRepository;
 import MensajeriaExpress.service.ClientService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.apache.catalina.connector.ClientAbortException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -85,6 +87,7 @@ public class ClienteController {
         cliente.setCiudad(clienteDto.getCiudad());
         cliente.setEmail(clienteDto.getEmail());
 
+
         return cliente;
 
     }
@@ -100,6 +103,8 @@ public class ClienteController {
         clienteDto.setCiudad(cliente.getCiudad());
         clienteDto.setDireccionResidencia(cliente.getDireccionResidencia());
         clienteDto.setEmail(cliente.getEmail());
+
+
         return clienteDto;
     }
 
